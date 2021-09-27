@@ -1,0 +1,11 @@
+---
+- name: Install httpd
+  hosts: all
+
+  roles: 
+        - git---
+- name: Install httpd
+  hosts: all
+
+  roles: 
+        - jenkins
