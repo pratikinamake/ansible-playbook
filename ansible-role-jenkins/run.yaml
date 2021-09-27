@@ -1,6 +1,0 @@
----
-- name: Install httpd
-  hosts: all
-
-  roles: 
-        - ansible-role-jenkins 

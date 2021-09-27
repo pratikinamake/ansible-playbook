@@ -1,0 +1,38 @@
+#---
+#- name: install git
+#  yum:
+#    name: git
+#    state: present
+
+---
+- name: install jenkins
+  yum:
+    name: jenkins
+    state: present
+
+- name: start jenkins
+  systemd:
+     name: jenkins
+     state: started
+
+- name: enable jenkins
+  systemd:
+     name: jenkins
+     enabled: true
+
+- name: Open Firewall Port
+  firewalld:
+     zone: public
+     port: 8080/tcp
+     permanent: true
+     state: enabled
+     immediate: true
+
+- name: Display first password for the jenkins
+  shell: sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+  register: command_output
+
+- debug:
+    var: command_output.stdout_lines
+
+
